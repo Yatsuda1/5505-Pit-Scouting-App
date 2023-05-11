@@ -1,30 +1,19 @@
-const submitButton = document.getElementById("submit-button");
-const outputDiv = document.getElementById("output-div");
+const submitBtn = document.getElementById('submit-btn');
+const outputDiv = document.getElementById('output-div');
 
-submitButton.addEventListener("click", function() {
-  const textBoxes = document.querySelectorAll("input[type='text']");
-  const checkBoxes = document.querySelectorAll("input[type='checkbox']");
-  let data = "";
-
-  textBoxes.forEach((textBox) => {
-    data += `${textBox.value}\n`;
-  });
-
-  checkBoxes.forEach((checkBox) => {
-    data += `${checkBox.checked ? "Yes" : "No"}\n`;
-  });
+submitBtn.addEventListener('click', () => {
+  const data = [];
+  const inputs = document.getElementsByTagName('input');
+  for (let i = 0; i < inputs.length; i++) {
+    data.push(inputs[i].value);
+  }
 
   const qrCode = new QRCode(outputDiv, {
-    text: data,
+    text: data.join(','),
     width: 256,
     height: 256,
-    colorDark: "#000000",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H,
+    colorDark: '#000000',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
   });
-
-  // Add an img element to the outputDiv and set its src to the data URL
-  const qrImg = document.createElement("img");
-  qrImg.src = outputDiv.querySelector("canvas").toDataURL();
-  outputDiv.appendChild(qrImg);
 });
