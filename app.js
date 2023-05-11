@@ -22,4 +22,9 @@ submitButton.addEventListener("click", function() {
     colorLight: "#ffffff",
     correctLevel: QRCode.CorrectLevel.H,
   });
+
+  // Add an img element to the outputDiv and set its src to the data URL
+  const qrImg = document.createElement("img");
+  qrImg.src = outputDiv.querySelector("canvas").toDataURL();
+  outputDiv.appendChild(qrImg);
 });
