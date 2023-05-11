@@ -1,19 +1,36 @@
-const submitBtn = document.getElementById('submit-btn');
-const outputDiv = document.getElementById('output-div');
+function generateQR() {
+  var scout = document.getElementById("scout").value;
+  var teamNumber = document.getElementById("team-number").value;
+  var teamName = document.getElementById("team-name").value;
+  var botWeight = document.getElementById("bot-weight").value;
+  var botDimensions = document.getElementById("bot-dimensions").value;
+  var swerveDrive = document.getElementById("swerve-drive").checked ? "yes" : "no";
+  var highLowGear = document.getElementById("high-low-gear").checked ? "yes" : "no";
+  var limelight = document.getElementById("limelight").checked ? "yes" : "no";
+  var aprilTags = document.getElementById("april-tags").checked ? "yes" : "no";
+  var comments = document.getElementById("comments").value;
 
-submitBtn.addEventListener('click', () => {
-  const data = [];
-  const inputs = document.getElementsByTagName('input');
-  for (let i = 0; i < inputs.length; i++) {
-    data.push(inputs[i].value);
-  }
+  var data = {
+    scout,
+    teamNumber,
+    teamName,
+    botWeight,
+    botDimensions,
+    swerveDrive,
+    highLowGear,
+    limelight,
+    aprilTags,
+    comments
+  };
 
-  const qrCode = new QRCode(outputDiv, {
-    text: data.join(','),
+  var qrCodeDiv = document.getElementById("qrcode");
+  qrCodeDiv.innerHTML = ""; // Clear previous QR code if any
+  new QRCode(qrCodeDiv, {
+    text: JSON.stringify(data),
     width: 256,
     height: 256,
-    colorDark: '#000000',
-    colorLight: '#ffffff',
+    colorDark: "#000000",
+    colorLight: "#ffffff",
     correctLevel: QRCode.CorrectLevel.H
   });
-});
+}

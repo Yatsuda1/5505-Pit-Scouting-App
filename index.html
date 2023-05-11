@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>5505 Pit Scouting</title>
-  <link rel="stylesheet" href="style.css">
+	<title>Robot Scout Data Form</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="qrcode.min.js"></script>
 </head>
 <body>
-  <header>
-    <h1>5505 Pit Scouting</h1>
-  </header>
-  
-  <main>
-    <form>
-      <div>
-        <label for="name">Scout Name(s):</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div>
-        <label for="TeamNumber">Team Number:</label>
-        <input type="text" id="TeamNumber" name="TeamNumber" required>
-      </div>
-      <div>
-        <label for="TeamName">Team Name:</label>
-        <input type="text" id="TeamName" name="TeamName" required>
-      </div>
-      <div>
-        <label for="weight">Bot Weight (With Bumpers):</label>
-        <input type="text" id="weight" name="weight" required>
-      </div>
-      <div>
-        <label for="dimensions">Bot Dimensions (With Bumpers):</label>
-        <input type="text" id="dimensions" name="dimensions" required>
-      </div>
-      <div>
-        <label for="HasSwerve">Has Swerve Drive:</label>
-        <input type="checkbox" id="HasSwerve" name="HasSwerve">
-      </div>
-      <div>
-        <label for="HiLowGears">High/Low Gears:</label>
-        <input type="checkbox" id="HiLowGears" name="HiLowGears">
-      </div>
-      <div>
-        <label for="Limelight">Uses LimeLight:</label>
-        <input type="checkbox" id="Limelight" name="Limelight">
-      </div>
-      <div>
-        <label for="AprilTags">Uses April Tags:</label>
-        <input type="checkbox" id="AprilTags" name="AprilTags">
-      </div>
-      <div>
-        <label for="Comments">Comments Or Other Features:</label>
-        <input type="text" id="Comments" name="Comments">
-      </div>
-      <button type="submit">Generate QR Code</button>
-    </form>
-    
-    <div id="qrcode"></div>
-  </main>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
-  <script src="app.js"></script>
+	<div class="header">
+		<h1>Robot Scout Data Form</h1>
+	</div>
+	<div class="container">
+		<h2>Scout Form</h2>
+		<form id="form">
+			<div class="row">
+				<label for="scout">Scout(s):</label>
+				<input type="text" id="scout" name="scout" required>
+			</div>
+			<div class="row">
+				<label for="team-number">Team Number:</label>
+				<input type="text" id="team-number" name="team-number" required>
+			</div>
+			<div class="row">
+				<label for="team-name">Team Name:</label>
+				<input type="text" id="team-name" name="team-name" required>
+			</div>
+			<div class="row">
+				<label for="bot-weight">Bot Weight:</label>
+				<input type="text" id="bot-weight" name="bot-weight" required>
+			</div>
+			<div class="row">
+				<label for="bot-dimensions">Bot Dimensions:</label>
+				<input type="text" id="bot-dimensions" name="bot-dimensions" required>
+			</div>
+			<div class="row">
+				<label for="swerve-drive">Swerve Drive:</label>
+				<input type="checkbox" id="swerve-drive" name="swerve-drive">
+			</div>
+			<div class="row">
+				<label for="high-low-gear">High / Low Gear:</label>
+				<input type="checkbox" id="high-low-gear" name="high-low-gear">
+			</div>
+			<div class="row">
+				<label for="limelight">Limelight:</label>
+				<input type="checkbox" id="limelight" name="limelight">
+			</div>
+			<div class="row">
+				<label for="april-tags">April Tags:</label>
+				<input type="checkbox" id="april-tags" name="april-tags">
+			</div>
+			<div class="row">
+				<label for="comments">Comments:</label>
+				<textarea id="comments" name="comments"></textarea>
+			</div>
+			<div class="row">
+				<button type="button" onclick="generateQR()">Generate QR Code</button>
+			</div>
+		</form>
+		<div id="qrcode"></div>
+	</div>
+
+	<script src="app.js"></script>
 </body>
 </html>

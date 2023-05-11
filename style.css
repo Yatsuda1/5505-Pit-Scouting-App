@@ -1,72 +1,46 @@
-/* Set black background color for the page */
 body {
   background-color: black;
   color: white;
   font-family: Arial, sans-serif;
-  font-size: 18px;
-  margin: 0;
-  padding: 0;
+  text-align: center;
 }
 
-/* Add a container for the form elements */
-.form-container {
+h1 {
+  font-size: 48px;
+  margin-top: 40px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.text-input {
   width: 80%;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #222;
+  height: 40px;
+  margin-bottom: 20px;
   border: 2px solid black;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Style the text input fields */
-.form-container input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  box-sizing: border-box;
-  border: 2px solid white;
-  background-color: transparent;
-  color: white;
-}
-
-/* Style the check boxes */
-.form-container input[type="checkbox"] {
-  margin: 10px;
-  transform: scale(2);
-}
-
-/* Add a title for the page */
-.title {
-  text-align: center;
-  font-size: 36px;
-  font-weight: bold;
-  margin-top: 50px;
-}
-
-/* Style the QR code container */
-.qr-code-container {
-  margin: 50px auto;
-  text-align: center;
-}
-
-/* Add a border to the QR code image */
-.qr-code-container img {
-  border: 2px solid white;
-}
-
-/* Style the button */
-.form-container button {
-  display: block;
-  margin: 20px auto;
-  padding: 10px;
-  border: 2px solid white;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-}
-
-/* Style the button on hover */
-.form-container button:hover {
+  padding: 5px;
+  font-size: 18px;
   background-color: white;
   color: black;
+}
+
+.checkbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkbox-label {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+#qr-code {
+  margin-top: 40px;
 }
