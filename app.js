@@ -1,5 +1,6 @@
-// Get the form element
+// Get the form element and the QR code element
 const form = document.querySelector('form');
+const qrCodeDiv = document.querySelector('#qrcode');
 
 // Add an event listener to the form submit button
 form.addEventListener('submit', (event) => {
@@ -17,22 +18,13 @@ form.addEventListener('submit', (event) => {
   // Generate the data string to be encoded in the QR code
   const dataString = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAttending: ${isAttending}\nVolunteering: ${isVolunteering}\nSpecial Needs: ${hasSpecialNeeds}\nDietary Restrictions: ${dietaryRestrictions}`;
   
-  // Generate the QR code and display it on the page
-  generateQRCode(dataString);
-});
-
-// Function to generate a QR code using the QRCode.js library
-function generateQRCode(data) {
-  // Get the QR code element
-  const qrcode = document.querySelector('#qrcode');
-  
   // Generate the QR code using the QRCode.js library
-  new QRCode(qrcode, {
-    text: data,
+  const qrcode = new QRCode(qrCodeDiv, {
+    text: dataString,
     width: 256,
     height: 256,
     colorDark: "#000000",
     colorLight: "#ffffff",
     correctLevel: QRCode.CorrectLevel.H
   });
-}
+});
