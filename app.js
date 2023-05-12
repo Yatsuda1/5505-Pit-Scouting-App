@@ -1,36 +1,53 @@
-function generateQR() {
-  var scout = document.getElementById("scout").value;
-  var teamNumber = document.getElementById("team-number").value;
-  var teamName = document.getElementById("team-name").value;
-  var botWeight = document.getElementById("bot-weight").value;
-  var botDimensions = document.getElementById("bot-dimensions").value;
-  var swerveDrive = document.getElementById("swerve-drive").checked ? "yes" : "no";
-  var highLowGear = document.getElementById("high-low-gear").checked ? "yes" : "no";
-  var limelight = document.getElementById("limelight").checked ? "yes" : "no";
-  var aprilTags = document.getElementById("april-tags").checked ? "yes" : "no";
-  var comments = document.getElementById("comments").value;
+// create references to the form elements
+const scoutInput = document.getElementById('scout-input');
+const teamNumInput = document.getElementById('team-num-input');
+const teamNameInput = document.getElementById('team-name-input');
+const weightInput = document.getElementById('weight-input');
+const dimensionsInput = document.getElementById('dimensions-input');
+const swerveDriveInput = document.getElementById('swerve-drive-input');
+const highLowGearInput = document.getElementById('high-low-gear-input');
+const limelightInput = document.getElementById('limelight-input');
+const aprilTagsInput = document.getElementById('april-tags-input');
+const commentsInput = document.getElementById('comments-input');
+const qrCodeDiv = document.getElementById('qrcode');
 
-  var data = {
-    scout,
-    teamNumber,
-    teamName,
-    botWeight,
-    botDimensions,
-    swerveDrive,
-    highLowGear,
-    limelight,
-    aprilTags,
-    comments
+// add event listener to the form
+document.getElementById('form').addEventListener('submit', (event) => {
+  event.preventDefault(); // prevent default form submit behavior
+
+  // create an object to store form data
+  const formData = {
+    scout: scoutInput.value,
+    teamNum: teamNumInput.value,
+    teamName: teamNameInput.value,
+    weight: weightInput.value,
+    dimensions: dimensionsInput.value,
+    swerveDrive: swerveDriveInput.checked,
+    highLowGear: highLowGearInput.checked,
+    limelight: limelightInput.checked,
+    aprilTags: aprilTagsInput.checked,
+    comments: commentsInput.value,
   };
 
-  var qrCodeDiv = document.getElementById("qrcode");
-  qrCodeDiv.innerHTML = ""; // Clear previous QR code if any
-  new QRCode(qrCodeDiv, {
-    text: JSON.stringify(data),
+  // generate QR code
+  const qrCode = new QRCode(qrCodeDiv, {
+    text: JSON.stringify(formData),
     width: 256,
     height: 256,
-    colorDark: "#000000",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H
+    colorDark: '#000000',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H,
   });
-}
+
+  // clear form inputs
+  scoutInput.value = '';
+  teamNumInput.value = '';
+  teamNameInput.value = '';
+  weightInput.value = '';
+  dimensionsInput.value = '';
+  swerveDriveInput.checked = false;
+  highLowGearInput.checked = false;
+  limelightInput.checked = false;
+  aprilTagsInput.checked = false;
+  commentsInput.value = '';
+});
